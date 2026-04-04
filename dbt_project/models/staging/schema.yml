@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: stg_taxi_zones
+    description: "Staging model cho NYC taxi zones — mapping LocationID sang tên zone và borough"
+    columns:
+      - name: location_id
+        description: "ID của zone — từ 1 đến 265"
+        tests:
+          - not_null
+          - unique
+
+      - name: borough
+        description: "Tên quận — Manhattan, Queens, Brooklyn, Bronx, Staten Island, EWR"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Manhattan', 'Queens', 'Brooklyn', 'Bronx', 'Staten Island', 'EWR', 'Unknown', 'N/A']
+
+      - name: zone
+        description: "Tên zone cụ thể"
+        tests:
+          - not_null
+
+      - name: service_zone
+        description: "Loại service zone"
+        tests:
+          - not_null
+
+  - name: stg_yellow_trips
+    description: "Staging model cho NYC yellow taxi trips 2024-2026"
+    columns:
+      - name: vendor_id
+        tests:
+          - not_null
+
+      - name: pickup_datetime
+        tests:
+          - not_null
+
+      - name: dropoff_datetime
+        tests:
+          - not_null
+
+      - name: pickup_location_id
+        tests:
+          - not_null
+
+      - name: dropoff_location_id
+        tests:
+          - not_null
+
+      - name: fare_amount
+        tests:
+          - not_null
+
+      - name: trip_duration_minutes
+        tests:
+          - not_null
+
+      - name: payment_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5, 6, 0]

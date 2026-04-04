@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: main
+    description: "Raw tables loaded từ NYC TLC"
+    tables:
+      - name: taxi_zones
+        description: "Zone lookup — LocationID to Borough/Zone mapping"
