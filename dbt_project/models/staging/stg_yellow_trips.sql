@@ -24,8 +24,6 @@ renamed as (
         cbd_congestion_fee,
         payment_type,
         store_and_fwd_flag      as store_and_fwd_flag,
-
-        -- Cột tính toán
         datediff('minute', tpep_pickup_datetime, tpep_dropoff_datetime) as trip_duration_minutes,
         date_trunc('month', tpep_pickup_datetime)                        as pickup_month
 
